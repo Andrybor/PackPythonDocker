@@ -16,7 +16,7 @@ RUN pip install -r requirements.txt
 # set the working directory in container
 WORKDIR /opt/webapp
 
-# copy the content of the local src directory to the working directory
+# copy the content of the local app directory to the working directory
 COPY app/ .
 
 # command to run on container start
