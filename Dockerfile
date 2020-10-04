@@ -1,17 +1,23 @@
 # set base image (host OS)
-FROM python:3.8
+FROM python:2
+
+# open 5000 port
+EXPOSE 5000
 
 # set the working directory in the container
-WORKDIR /code
+WORKDIR /tmp
 
 # copy the dependencies file to the working directory
-COPY requirements.txt .
+COPY app/requirements.txt .
 
 # install dependencies
 RUN pip install -r requirements.txt
 
+# set the working directory in container
+WORKDIR /opt/webapp
+
 # copy the content of the local src directory to the working directory
-COPY src/ .
+COPY app/ .
 
 # command to run on container start
-CMD [ "python", "./server.py" ]
+CMD [ "python", "./app.py" ]
